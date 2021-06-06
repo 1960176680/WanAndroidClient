@@ -1,33 +1,27 @@
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
+    id 'kotlin-android-extensions'
 }
 
 android {
-    compileSdkVersion 30
-
+    compileSdkVersion 26
     defaultConfig {
-        applicationId "com.wanandroid.mykotlin"
+        applicationId "top.jowanxu.wanandroidclient"
         minSdkVersion 19
-        targetSdkVersion 30
-        versionCode 1
-        versionName "1.0"
-
+        targetSdkVersion 26
+        versionCode 18
+        versionName "1.0.3"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        vectorDrawables.useSupportLibrary = true
     }
-
     buildTypes {
         release {
             minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
-    compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
-    }
-    kotlinOptions {
-        jvmTarget = '1.8'
+    productFlavors {
     }
 }
 
@@ -55,4 +49,9 @@ dependencies {
     implementation "com.gyf.barlibrary:barlibrary:$barlibrary_version"
     implementation "com.hyman:flowlayout-lib:$flowlayout_version"
     implementation "com.jakewharton.retrofit:retrofit2-kotlin-coroutines-experimental-adapter:$retrofit2_converter_kotlin_coroutines_version"
+}
+kotlin {
+    experimental {
+        coroutines "enable"
+    }
 }
