@@ -50,8 +50,3 @@ dependencies {
     implementation "com.hyman:flowlayout-lib:$flowlayout_version"
     implementation "com.jakewharton.retrofit:retrofit2-kotlin-coroutines-adapter:$retrofit2_converter_kotlin_coroutines_version"
 }
-//kotlin {
-//    experimental {
-//        coroutines "enable"
-//    }
-//}

@@ -21,14 +21,6 @@ ext.leakcanary_version = "1.5.4"
 buildscript {
     ext.kotlin_version = '1.4.20'
     repositories {
-        mavenLocal()
-        maven {url"https://maven.aliyun.com/repository/public"}
-
-        maven {url"https://maven.aliyun.com/repository/google"}
-        maven { url "https://www.jitpack.io" }
-        maven {url"https://maven.aliyun.com/repository/gradle-plugin"}
-        mavenCentral()
-//        google()
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:4.2.1'
@@ -41,14 +33,6 @@ buildscript {
 
 allprojects {
     repositories {
-        mavenLocal()
-        maven {url"https://maven.aliyun.com/repository/public"}
-
-        maven {url"https://maven.aliyun.com/repository/google"}
-        maven { url "https://www.jitpack.io" }
-        maven {url"https://maven.aliyun.com/repository/gradle-plugin"}
-        mavenCentral()
-//        google()
     }
 }
 
