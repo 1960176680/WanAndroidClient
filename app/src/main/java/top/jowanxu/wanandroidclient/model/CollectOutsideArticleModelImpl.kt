@@ -3,9 +3,10 @@ package top.jowanxu.wanandroidclient.model
 import Constant
 import RetrofitHelper
 import cancelByActive
-import kotlinx.coroutines.experimental.Deferred
-import kotlinx.coroutines.experimental.android.UI
-import kotlinx.coroutines.experimental.async
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Deferred
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.async
 import top.jowanxu.wanandroidclient.bean.HomeListResponse
 import top.jowanxu.wanandroidclient.presenter.HomePresenter
 import tryCatch
@@ -29,7 +30,7 @@ class CollectOutsideArticleModelImpl : CollectOutsideArticleModel {
         onCollectOutsideArticleListener: HomePresenter.OnCollectOutsideArticleListener,
         title: String, author: String, link: String, isAdd: Boolean
     ) {
-        async(UI) {
+        CoroutineScope(Dispatchers.Main).async {
             tryCatch({
                 it.printStackTrace()
                 onCollectOutsideArticleListener.collectOutsideArticleFailed(it.toString(), isAdd)

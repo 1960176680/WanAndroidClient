@@ -3,9 +3,10 @@ package top.jowanxu.wanandroidclient.model
 import Constant
 import RetrofitHelper
 import cancelByActive
-import kotlinx.coroutines.experimental.Deferred
-import kotlinx.coroutines.experimental.android.UI
-import kotlinx.coroutines.experimental.async
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Deferred
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.async
 import top.jowanxu.wanandroidclient.bean.HomeListResponse
 import top.jowanxu.wanandroidclient.presenter.HomePresenter
 import top.jowanxu.wanandroidclient.presenter.SearchPresenter
@@ -31,7 +32,7 @@ class SearchModelImpl : SearchModel, CollectArticleModel {
         page: Int,
         k: String
     ) {
-        async(UI) {
+        CoroutineScope(Dispatchers.Main).async {
             tryCatch({
                 it.printStackTrace()
                 onSearchListListener.getSearchListFailed(it.toString())
@@ -57,7 +58,7 @@ class SearchModelImpl : SearchModel, CollectArticleModel {
      * @param page page
      */
     override fun getLikeList(onLikeListListener: SearchPresenter.OnLikeListListener, page: Int) {
-        async(UI) {
+        CoroutineScope(Dispatchers.Main).async {
             tryCatch({
                 it.printStackTrace()
                 onLikeListListener.getLikeListFailed(it.toString())
@@ -89,7 +90,7 @@ class SearchModelImpl : SearchModel, CollectArticleModel {
         id: Int,
         isAdd: Boolean
     ) {
-        async(UI) {
+        CoroutineScope(Dispatchers.Main).async {
             tryCatch({
                 it.printStackTrace()
                 onCollectArticleListener.collectArticleFailed(it.toString(), isAdd)

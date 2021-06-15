@@ -1,11 +1,8 @@
 package top.jowanxu.wanandroidclient.model
-
 import Constant
 import RetrofitHelper
 import cancelByActive
-import kotlinx.coroutines.experimental.Deferred
-import kotlinx.coroutines.experimental.android.UI
-import kotlinx.coroutines.experimental.async
+import kotlinx.coroutines.*
 import top.jowanxu.wanandroidclient.bean.*
 import top.jowanxu.wanandroidclient.presenter.HomePresenter
 import tryCatch
@@ -55,7 +52,7 @@ class HomeModelImpl : HomeModel, CollectArticleModel {
      * @param page page
      */
     override fun getHomeList(onHomeListListener: HomePresenter.OnHomeListListener, page: Int) {
-        async(UI) {
+        CoroutineScope(Dispatchers.Main).async {
             tryCatch({
                 it.printStackTrace()
                 onHomeListListener.getHomeListFailed(it.toString())
@@ -85,7 +82,7 @@ class HomeModelImpl : HomeModel, CollectArticleModel {
      * @param onTypeTreeListListener HomePresenter.OnTypeTreeListListener
      */
     override fun getTypeTreeList(onTypeTreeListListener: HomePresenter.OnTypeTreeListListener) {
-        async(UI) {
+        CoroutineScope(Dispatchers.Main).async {
             tryCatch({
                 it.printStackTrace()
                 onTypeTreeListListener.getTypeTreeListFailed(it.toString())
@@ -119,7 +116,7 @@ class HomeModelImpl : HomeModel, CollectArticleModel {
         onLoginListener: HomePresenter.OnLoginListener,
         username: String, password: String
     ) {
-        async(UI) {
+        CoroutineScope(Dispatchers.Main).async {
             tryCatch({
                 it.printStackTrace()
                 onLoginListener.loginFailed(it.toString())
@@ -154,7 +151,7 @@ class HomeModelImpl : HomeModel, CollectArticleModel {
         onRegisterListener: HomePresenter.OnRegisterListener,
         username: String, password: String, repassword: String
     ) {
-        async(UI) {
+        CoroutineScope(Dispatchers.Main).async {
             tryCatch({
                 it.printStackTrace()
                 onRegisterListener.registerFailed(it.toString())
@@ -190,7 +187,7 @@ class HomeModelImpl : HomeModel, CollectArticleModel {
         var bookmarkResult: FriendListResponse? = null
         var hotResult: HotKeyResponse? = null
         var commonResult: FriendListResponse? = null
-        async(UI) {
+        CoroutineScope(Dispatchers.Main).async {
             tryCatch({
                 throwable = it
                 it.printStackTrace()
@@ -255,7 +252,7 @@ class HomeModelImpl : HomeModel, CollectArticleModel {
         id: Int,
         isAdd: Boolean
     ) {
-        async(UI) {
+        CoroutineScope(Dispatchers.Main).async {
             tryCatch({
                 it.printStackTrace()
                 onCollectArticleListener.collectArticleFailed(it.toString(), isAdd)
@@ -288,7 +285,7 @@ class HomeModelImpl : HomeModel, CollectArticleModel {
      * @param onBannerListener HomePresenter.OnBannerListener
      */
     override fun getBanner(onBannerListener: HomePresenter.OnBannerListener) {
-        async(UI) {
+        CoroutineScope(Dispatchers.Main).async {
             tryCatch({
                 it.printStackTrace()
                 onBannerListener.getBannerFailed(it.toString())

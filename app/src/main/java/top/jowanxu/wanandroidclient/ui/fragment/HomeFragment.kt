@@ -14,9 +14,7 @@ import android.view.ViewGroup
 import com.chad.library.adapter.base.BaseQuickAdapter
 import inflater
 import kotlinx.android.synthetic.main.activity_search.*
-import kotlinx.coroutines.experimental.Job
-import kotlinx.coroutines.experimental.delay
-import kotlinx.coroutines.experimental.launch
+import kotlinx.coroutines.*
 import toast
 import top.jowanxu.wanandroidclient.R
 import top.jowanxu.wanandroidclient.adapter.BannerAdapter
@@ -408,7 +406,7 @@ class HomeFragment : BaseFragment(), HomeFragmentView, CollectArticleView {
     /**
      * get Banner switch job
      */
-    private fun getBannerSwitchJob() = launch {
+    private fun getBannerSwitchJob() = CoroutineScope(Dispatchers.Main).launch {
         repeat(Int.MAX_VALUE) {
             if (bannerDatas.size == 0) {
                 return@launch

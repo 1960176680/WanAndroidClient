@@ -3,9 +3,10 @@ package top.jowanxu.wanandroidclient.model
 import Constant
 import RetrofitHelper
 import cancelByActive
-import kotlinx.coroutines.experimental.Deferred
-import kotlinx.coroutines.experimental.android.UI
-import kotlinx.coroutines.experimental.async
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Deferred
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.async
 import top.jowanxu.wanandroidclient.bean.ArticleListResponse
 import top.jowanxu.wanandroidclient.presenter.TypeArticlePresenter
 import tryCatch
@@ -28,7 +29,7 @@ class TypeArticleModelImpl : TypeArticleModel {
         page: Int,
         cid: Int
     ) {
-        async(UI) {
+        CoroutineScope(Dispatchers.Main).async {
             tryCatch({
                 it.printStackTrace()
                 onTypeArticleListListener.getTypeArticleListFailed(it.toString())
